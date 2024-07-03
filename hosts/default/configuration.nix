@@ -93,13 +93,14 @@
     #  thunderbird
     ];
   };
-
+ 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = {
       "devansh" = import ./home.nix;
     };
   };
+  
 
   # Install firefox.
   programs.firefox.enable = true;
@@ -167,4 +168,7 @@
     rebuild = "sudo nixos-rebuild switch --flake /etc/nixos#default";
     config = "sudo nano /etc/nixos/configuration.nix";
   };
+
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
 }
