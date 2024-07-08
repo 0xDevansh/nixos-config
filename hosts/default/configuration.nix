@@ -125,6 +125,7 @@
     gnumake
     libsecret
     obsidian
+    cmake
   ];
 
   fonts.packages = with pkgs; [
@@ -171,4 +172,6 @@
 
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
+
+  hardware.opengl.enable = true;
 }
