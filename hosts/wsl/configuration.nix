@@ -5,11 +5,10 @@
 # NixOS-WSL specific options are documented on the NixOS-WSL repository:
 # https://github.com/nix-community/NixOS-WSL
 
-{ config, lib, pkgs, ... }:
+{ config, lib, inputs, pkgs, ... }:
 
 {
   imports = [
-    ../../modules/nixos/nvidia.nix
     inputs.home-manager.nixosModules.default
   ];
 
@@ -27,7 +26,7 @@
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = {
-      "devansh" = import ./home.nix;
+      "nixos" = import ./home.nix;
     };
   };
 
