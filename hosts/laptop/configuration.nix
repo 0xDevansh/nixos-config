@@ -61,6 +61,8 @@
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -103,7 +105,8 @@
   nixpkgs.config.allowUnfree = true;
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
-
+  
+  virtualisation.virtualbox.host.enable = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -114,11 +117,22 @@
       rustup
       wget
       nodejs_22
+      python3
       gdb
       gnumake
       libsecret
       obsidian
       cmake
+      xorg.xbacklight
+      zoom-us
+      obs-studio
+
+      # Haccing stuff
+      dig
+      nmap
+      burpsuite
+      dirb
+      freecad
   ];
 
   fonts.packages = with pkgs; [
@@ -166,5 +180,9 @@
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
   hardware.opengl.enable = true;
-
+  
+  services.mysql = {
+    enable = true;
+    package = pkgs.mariadb;
+  };
 }
