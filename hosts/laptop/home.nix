@@ -33,6 +33,8 @@
     figma-linux
     darktable
     vscodium
+    blender
+    shotcut
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -90,6 +92,8 @@
     userName = "0xDevansh";
     userEmail = "devanshkandpal54@gmail.com";
   };
+
+  programs.java.enable = true;
 
   programs.zsh = {
     enable = true;

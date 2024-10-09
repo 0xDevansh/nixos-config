@@ -12,8 +12,16 @@
     ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  # boot.loader.systemd-boot.enable = true;
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+    grub = {
+      enable = true;
+      devices = [ "nodev" ];
+      efiSupport = true;
+      useOSProber = true;
+    };
+  };
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -117,7 +125,7 @@
       rustup
       wget
       nodejs_22
-      python3
+      python312
       gdb
       gnumake
       libsecret
@@ -133,6 +141,9 @@
       burpsuite
       dirb
       freecad
+      corefonts
+      vistafonts
+      os-prober
   ];
 
   fonts.packages = with pkgs; [
